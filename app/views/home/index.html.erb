@@ -1,0 +1,26 @@
+<% if user_signed_in? %>
+<h1>Hi, <%= current_user.email %></h1>
+<%= link_to "Log out", destroy_user_session_path, method: :delete%>
+<h3>전체 유저</h3>
+
+<% @users.each do |user|%>
+<%= user.email %>
+<% if user==current_user%>
+MY
+<% elsif current_user.followings.include? (user) %>
+팔로우중
+<% else %>
+<a href='home/createfollow/<%=current_user.id%>/<%=user.id%>'>follow하기</a>
+<% end %>
+<br>
+<% end %>
+<br>
+<a href='home/following/<%=current_user.id%>'>팔로잉보기</a>
+<%= current_user.followings.count %> &nbsp;
+<a href='home/follower/<%=current_user.id%>'>팔로워보기</a>
+<%= current_user.followers.count %>
+<% else%>
+<%= link_to "Log in", new_user_session_path, method: :get%>
+<%= link_to "new sign",new_user_registration_path, method: :get%>
+<% end %>
+<br>
