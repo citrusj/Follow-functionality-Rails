@@ -15,5 +15,10 @@ class HomeController < ApplicationController
 		redirect_to '/'
 		
 	end
+	def deletefollow
+		follow = Follow.where(follower_id: params[:follower_id], following_id: params[:following_id]).first
+		follow.destroy
+		redirect_to '/'
+	end
 
 end
