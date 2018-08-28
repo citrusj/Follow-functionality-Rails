@@ -8,7 +8,7 @@
 10.times do |user|
 	User.create!(
 		email: "seedmail#{user}@abc.com"
-		password: "11111"
+		password: "111111"
 		)
 end
 puts "10 users created"

@@ -8,16 +8,18 @@
 <% if user==current_user%>
 MY
 <% elsif current_user.followings.include? (user) %>
-팔로우중
+<팔로우중>
+<a href='home/deletefollow/<%=current_user.id%>/<%=user.id%>'>unfollow하기</a>
 <% else %>
+
 <a href='home/createfollow/<%=current_user.id%>/<%=user.id%>'>follow하기</a>
 <% end %>
 <br>
 <% end %>
 <br>
-<a href='home/following/<%=current_user.id%>'>팔로잉보기</a>
+<a href='home/following/<%=current_user.id%>'>Following보기</a>
 <%= current_user.followings.count %> &nbsp;
-<a href='home/follower/<%=current_user.id%>'>팔로워보기</a>
+<a href='home/follower/<%=current_user.id%>'>Followers보기</a>
 <%= current_user.followers.count %>
 <% else%>
 <%= link_to "Log in", new_user_session_path, method: :get%>

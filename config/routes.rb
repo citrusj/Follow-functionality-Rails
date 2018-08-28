@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get "/home/follower/:user_id" => 'home#showfollower'
   get "/home/following/:user_id" => 'home#showfollowing'
   get 'home/createfollow/:follower_id/:following_id' => 'home#createfollow'
+  get 'home/deletefollow/:follower_id/:following_id' => 'home#deletefollow'
 end
